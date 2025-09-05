@@ -19,10 +19,8 @@ jobs:
           LATEST_RELEASE=$(git branch -a | grep -o "release-[[:digit:]].\([[:digit:]]*\)" | sed -e "s/^release-//" | sort -V | tail -n 1)
           echo "$LATEST_RELEASE"
           echo "LATEST_RELEASE=release-$LATEST_RELEASE" >> "$GITHUB_ENV"
-      - name: test env var
-        run: echo "${{ env.LATEST_RELEASE }}"
-    # - uses: connor-baer/action-sync-branch@main
-    #   with:
-    #     branch: test
-    #     token: ${{ secrets.GITHUB_TOKEN }}
-    #     force: false
+    - uses: connor-baer/action-sync-branch@main
+      with:
+        branch: ${{ env.LATEST_RELEASE }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+        force: false
