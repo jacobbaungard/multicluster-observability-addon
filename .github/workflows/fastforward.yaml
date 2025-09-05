@@ -1,5 +1,4 @@
 name: fast foward main to latest release
-
 on:
   push:
     branches:
@@ -10,7 +9,6 @@ on:
       - opened
       - reopened
       - synchronize
-
 jobs:
   sync-branch:
     name: Update test branch
@@ -28,8 +26,8 @@ jobs:
           echo "LATEST_RELEASE=release-$LATEST_RELEASE" >> "$GITHUB_ENV"
       - name: test env var
         run: echo "${{ env.LATEST_RELEASE }}"
-      # - uses: connor-baer/action-sync-branch@main
-      #   with:
-      #     branch: test
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     force: false
+    # - uses: connor-baer/action-sync-branch@main
+    #   with:
+    #     branch: test
+    #     token: ${{ secrets.GITHUB_TOKEN }}
+    #     force: false
