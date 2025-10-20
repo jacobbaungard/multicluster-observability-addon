@@ -208,6 +208,7 @@ func buildSecrets(secrets []*corev1.Secret) ([]ConfigValue, error) {
 		}
 		secretValue := ConfigValue{
 			Name:   secret.Name,
+			Namespace: secret.Namespace,
 			Data:   string(dataJSON),
 			Labels: secret.Labels,
 		}

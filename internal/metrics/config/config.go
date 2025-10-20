@@ -52,6 +52,11 @@ const (
 	ScrapeClassUWLTarget      = "prometheus-user-workload.openshift-user-workload-monitoring.svc:9092"
 
 	AlertmanagerAccessorSecretName = "observability-alertmanager-accessor"
+	AlertmanagerRouterCASecretName = "hub-alertmanager-router-ca"
+	AlertmanagerRouteBYOCAName     = "alertmanager-byo-ca"
+	AlertmanagerRouteBYOCERTName   = "alertmanager-byo-cert"
+	AlertmanagerPlatformNamespace  = "openshift-monitoring"
+	AlertmanagerUWLNamespace       = "openshift-user-workload-monitoring"
 )
 
 var (
@@ -74,6 +79,11 @@ var (
 	}
 
 	ErrMissingImageOverride = errors.New("missing image override")
+
+	RouterDefaultCertsConfigMapObjKey = types.NamespacedName{
+		Name:      "router-certs-default",
+		Namespace: "openshift-ingress",
+	}
 )
 
 type ImageOverrides struct {
